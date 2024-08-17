@@ -1,6 +1,7 @@
-shap == 0.42.0
-matplotlib == 3.7.1
-pandas == 2.1.4
-numpy == 1.26.4
-sklearn-pandas == 2.2.0
-streamlit-shap==1.0.2
+streamlit==1.25.0
+shap==0.42.1
+pandas==1.5.3
+numpy==1.23.5
+scikit-learn==1.2.2
+matplotlib==3.7.2
+streamlit-shap==0.1.3
