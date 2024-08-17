@@ -5,6 +5,7 @@ import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.metrics import classification_report  # Import the classification_report function
 import matplotlib.pyplot as plt
 from streamlit_shap import st_shap
 
