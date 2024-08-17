@@ -94,5 +94,5 @@ st_shap(force_fig, height=400, width=1000)
 
 # Decision plot
 st.subheader("Decision Plot")
-decision_fig = shap.decision_plot(explainer.expected_value[prediction], shap_values_input[prediction], input_df_scaled, matplotlib=True)
+decision_fig = shap.decision_plot(explainer.expected_value[prediction], shap_values_input[prediction], input_df_scaled)
 st_shap(decision_fig)
