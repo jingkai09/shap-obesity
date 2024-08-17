@@ -5,7 +5,7 @@ import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler
-from sklearn.metrics import classification_report  # Import the classification_report function
+from sklearn.metrics import classification_report
 import matplotlib.pyplot as plt
 from streamlit_shap import st_shap
 
@@ -89,8 +89,10 @@ shap_values_input = explainer.shap_values(input_df_scaled)
 
 # Force plot
 st.subheader("Force Plot")
-st_shap(shap.force_plot(explainer.expected_value[prediction], shap_values_input[prediction], input_df_scaled), height=400, width=1000)
+force_fig = shap.force_plot(explainer.expected_value[prediction], shap_values_input[prediction], input_df_scaled, matplotlib=True)
+st_shap(force_fig, height=400, width=1000)
 
 # Decision plot
 st.subheader("Decision Plot")
-st_shap(shap.decision_plot(explainer.expected_value[prediction], shap_values_input[prediction], input_df_scaled))
+decision_fig = shap.decision_plot(explainer.expected_value[prediction], shap_values_input[prediction], input_df_scaled, matplotlib=True)
+st_shap(decision_fig)
