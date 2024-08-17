@@ -7,7 +7,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.metrics import classification_report
 import matplotlib.pyplot as plt
-import matplotlib
 import streamlit.components.v1 as components
 
 # Load the dataset
@@ -88,14 +87,12 @@ st.write(dict(zip(label_encoders['NObeyesdad'].classes_, probability)))
 # SHAP explanation for the input
 shap_values_input = explainer.shap_values(input_df_scaled)
 
-# Force plot as image
+# Force plot
 st.subheader("Force Plot")
-fig = plt.figure()
-shap.force_plot(explainer.expected_value[prediction], shap_values_input[prediction], input_df_scaled, matplotlib=True)
-st.pyplot(fig)
+force_plot_html = shap.force_plot(explainer.expected_value[prediction], shap_values_input[prediction], input_df_scaled, matplotlib=False)
+components.html(force_plot_html, height=400, width=1000)
 
-# Decision plot as image
+# Decision plot
 st.subheader("Decision Plot")
-fig = plt.figure()
-shap.decision_plot(explainer.expected_value[prediction], shap_values_input[prediction], input_df_scaled, matplotlib=True)
-st.pyplot(fig)
+decision_plot_html = shap.decision_plot(explainer.expected_value[prediction], shap_values_input[prediction], input_df_scaled, matplotlib=False)
+components.html(decision_plot_html, height=400, width=1000)
